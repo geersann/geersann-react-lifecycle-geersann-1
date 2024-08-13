@@ -13,12 +13,7 @@ export default class Task1 extends Component {
 
     componentDidMount() {
         fetch('http://localhost:3000/list')
-            .then(response => {
-                if(!response.ok) {
-                    throw new Error('Network not responding');
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(list => this.setState({ list, loading: false }))
             .catch(error => this.setState({ error, loading: false }));
     }
@@ -41,15 +36,16 @@ export default class Task1 extends Component {
 
         return (
             <div className='block1'>
-                <h1>Show List</h1>
-                <ul>
-                    {list.map((item, index) => (
-                        <li key={index}>
-                            {item.name} - {item.note}
-                        </li>
-                    ))}
-                </ul>
+                {list.map(item => (
+                    <div key={item.id} className='col col-3 border'>
+                        id - {item.id}<br />
+                        name - {item.name}<br />
+                        note - {item.note}
+                    </div>
+                ))}
             </div>
+
+        
         );
     }
 }
