@@ -12,7 +12,7 @@ export default class Task1 extends Component {
     }
 
     componentDidMount() {
-        fetch('https://solid-space-trout-4jj7vg45qq7vf7p5j-3000.app.github.dev/list')
+        fetch('http://localhost:3000/list')
             .then(response => {
                 if(!response.ok) {
                     throw new Error('Network not responding');
